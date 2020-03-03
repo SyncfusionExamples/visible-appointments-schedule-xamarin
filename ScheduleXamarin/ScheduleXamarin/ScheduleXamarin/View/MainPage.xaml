@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ScheduleXamarin"
+             xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             x:Class="ScheduleXamarin.MainPage">
+    <ContentPage.BindingContext>
+        <local:SchedulerViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <schedule:SfSchedule x:Name="schedule" ScheduleView="WeekView" DataSource="{Binding Meetings}">
+            <schedule:SfSchedule.AppointmentMapping>
+                <schedule:ScheduleAppointmentMapping
+			            SubjectMapping="EventName" 
+			            ColorMapping="Color"
+			            StartTimeMapping="From"
+			            EndTimeMapping="To"
+                        RecurrenceRuleMapping="RecurrenceRule">
+                </schedule:ScheduleAppointmentMapping>
+            </schedule:SfSchedule.AppointmentMapping>
+        </schedule:SfSchedule>
+    </Grid>
+    <ContentPage.Behaviors>
+        <local:ScheduleBehavior/>
+    </ContentPage.Behaviors>
+</ContentPage>
